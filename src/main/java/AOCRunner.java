@@ -1,96 +1,98 @@
-import Day1.Day1;
-
-import javax.swing.plaf.synth.SynthTextAreaUI;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.LinkPermission;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.Map;
 import java.util.stream.Stream;
 
 public class AOCRunner {
 
     public static void main(String[] args) {
-        Day1Part2();
-    }
-
-    private static void Day1Part1(){
-        //File path location
-        String filePath = "C:\\Users\\losma\\IdeaProjects\\AdventOfCode2023\\src\\main\\java\\somefile.txt";
-
-        int[] sum = {0};
-
-        //Using streams to read the file
-        try (Stream<String> lines = Files.lines(Paths.get(filePath))) {
-            lines.forEach(line -> {
-                // Process each line here
-                if(!line.isEmpty()) {
-                    sum[0] += Day1.getFirstAndLast(line);
-                }
-            });
-
-            System.out.println(sum[0]);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private static void Day1Part2() {
-        //File path location
         String filePath = "C:\\Users\\losma\\IdeaProjects\\AdventOfCode2023\\src\\main\\java\\somefile.txt";
         int[] sum = {0};
 
-        //creating a regex capture group
-        String patternForFirst = "([0-9]|one|two|three|four|five|six|seven|eight|nine)";
-
-        // Create a Pattern object for the above regex
-        Pattern firstWordPattern = Pattern.compile(patternForFirst);
-
-        //Using streams to read the file
+        HashMap<Integer,Boolean> possibleGamesMap = new HashMap<>();
         try (Stream<String> lines = Files.lines(Paths.get(filePath))) {
             lines.forEach(line -> {
                 if (!line.isEmpty()) {
-                    // Now creating pattern matcher object.
-                    Matcher firstMatcher = firstWordPattern.matcher(line);
+                    //Process each line here,
 
-                    String firstMatch = null;
-                    String lastMatch = null;
+                    //Day1.Day1Part1(line, sum);
+                    //Day1.Day1Part2(line, sum);
 
-                    //Loop the found matches, first start last end
-                    while (firstMatcher.find()) {
-                        if (firstMatch == null) {
-                            //Grabbing the first match
-                            firstMatch = firstMatcher.group(0);
+                    //Day2.Day2Part1(line,sum);
+
+                    ArrayList<String> games = new ArrayList<>();
+
+                    HashMap<String,Integer> gameValues = new HashMap<>();
+                    gameValues.put("red",0);
+                    gameValues.put("blue",0);
+                    gameValues.put("green",0);
+
+                    String[] split = line.split("[:;, ]");
+
+                    for (String s : split) {
+                        if (!s.isEmpty()) {
+                            games.add(s);
                         }
-                        //Grabbing the last match
-                        lastMatch = firstMatcher.group(0);
                     }
 
-                    if(firstMatch.length() > 1){
-                        firstMatch = Day1.changeWordToNumberString(firstMatch);
-                    }
-                    if(lastMatch.length() > 1){
-                        lastMatch = Day1.changeWordToNumberString(lastMatch);
+                    int currentGameId = 0;
+
+                    for(int i = 0; i < games.size()-1; i++){
+                        if(games.get(i).equalsIgnoreCase("game")){
+                            currentGameId = Integer.parseInt(games.get(i+1));
+                        }
+                        if(games.get(i).equalsIgnoreCase("red")){
+                            int currentRed = gameValues.get("red");
+                            currentRed += Integer.parseInt(games.get(i+1));
+                            gameValues.put("red",currentRed);
+                        }
+                        if(games.get(i).equalsIgnoreCase("blue")){
+                            int currentBlue = gameValues.get("blue");
+                            currentBlue += Integer.parseInt(games.get(i+1));
+                            gameValues.put("blue",currentBlue);
+                        }
+                        if(games.get(i).equalsIgnoreCase("green")){
+                            int currentGreen = gameValues.get("green");
+                            currentGreen += Integer.parseInt(games.get(i+1));
+                            gameValues.put("green",currentGreen);
+                        }
                     }
 
-                    //Joining the first and last match
-                    String joined = firstMatch + lastMatch;
-                    int joinedInt = Integer.parseInt(joined);
+                    System.out.println("Game id: " + currentGameId);
+                    System.out.println("Red values " + gameValues.get("red"));
+                    System.out.println("Green values " + gameValues.get("green"));
+                    System.out.println("Blue values " + gameValues.get("blue"));
 
-                    sum[0] += joinedInt;
+
+                    if(gameValues.get("red") <= 12 && gameValues.get("green") <= 13 && gameValues.get("blue") <= 14) {
+                        possibleGamesMap.put(currentGameId, true);
+                    }else{
+                        possibleGamesMap.put(currentGameId, false);
+                    }
+
+                    System.out.println("Game is possible: " + possibleGamesMap.get(currentGameId));
+                    System.out.println();
+
+                    sum[0] = 0;
+                    //Loop over the map and sum all the id values based on the boolean value
+                    for(Map.Entry<Integer,Boolean> entry : possibleGamesMap.entrySet()){
+                        if(entry.getValue() == true){
+                            sum[0] += entry.getKey();
+                        }
+                    }
                 }
             });
 
-            //Printing the sum value
+            System.out.println();
+            System.out.println(possibleGamesMap);
+
+            System.out.println("Sum of all values:");
             System.out.println(sum[0]);
-
-
         } catch (IOException e) {
-            e.printStackTrace();
+
         }
     }
 }
