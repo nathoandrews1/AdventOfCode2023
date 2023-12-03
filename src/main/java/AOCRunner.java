@@ -13,8 +13,8 @@ public class AOCRunner {
         int[] sum = {0};
 
         HashMap<Integer,Boolean> possibleGamesMap = new HashMap<>();
-        try (Stream<String> lines = Files.lines(Paths.get(filePath))) {
-            lines.forEach(line -> {
+        try{
+        Files.lines(Paths.get(filePath)).forEach(line -> {
                 if (!line.isEmpty()) {
                     //Process each line here,
 
