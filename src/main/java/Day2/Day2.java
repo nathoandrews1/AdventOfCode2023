@@ -10,6 +10,7 @@ import java.util.Map;
 public class Day2 {
 
     public static void main(String[] args) {
+        Day2Part1();
     }
 
     public static void Day2Part1() {
@@ -65,13 +66,12 @@ public class Day2 {
                                 //Wait until we add the current values of the found end of subset for correct value comparison
                                 if (isSubset[0] == true) {
                                     int highestCurrent = gameValues.get("red");
-                                    int newSubsetCount;
+                                    int newSubsetCount = 0;
 
                                     if (subsetValues.get("red") != null) {
                                         newSubsetCount = subsetValues.get("red");
                                     }
 
-                                    newSubsetCount = 0;
                                     if (newSubsetCount > highestCurrent) {
                                         gameValues.put("red", newSubsetCount);
                                     }
@@ -110,13 +110,12 @@ public class Day2 {
                                 //Wait until we add the current values of the found end of subset for correct value comparison
                                 if (isSubset[0] == true) {
                                     int highestCurrent = gameValues.get("blue");
-                                    int newSubsetCount;
+                                    int newSubsetCount = 0;
 
                                     if (subsetValues.get("blue") != null) {
                                         newSubsetCount = subsetValues.get("blue");
                                     }
 
-                                    newSubsetCount = 0;
                                     if (newSubsetCount > highestCurrent) {
                                         gameValues.put("blue", newSubsetCount);
                                     }
@@ -156,13 +155,12 @@ public class Day2 {
                                 //Wait until we add the current values of the found end of subset for correct value comparison
                                 if (isSubset[0] == true) {
                                     int highestCurrent = gameValues.get("green");
-                                    int newSubsetCount;
+                                    int newSubsetCount = 0;
 
                                     if (subsetValues.get("green") != null) {
                                         newSubsetCount = subsetValues.get("green");
                                     }
 
-                                    newSubsetCount = 0;
                                     if (newSubsetCount > highestCurrent) {
                                         gameValues.put("green", newSubsetCount);
                                     }
