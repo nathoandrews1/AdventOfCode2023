@@ -46,7 +46,6 @@ public class Day2 {
 
                     for (int i = 0; i < games.size(); i++) {
 
-
                         if (games.get(i).contains("game")) {
                             currentGameId = Integer.parseInt(games.get(i + 1));
                         }
@@ -95,7 +94,6 @@ public class Day2 {
                                 gameValues.put("red", currentRed);
                             }
                         }
-
 
                         //Check blue
                         int currentBlue = gameValues.get("blue");
