@@ -9,9 +9,10 @@ import java.util.Map;
 
 public class Day2 {
 
-    public static void main(String[] args) {}
+    public static void main(String[] args) {
+    }
 
-    public static void Day2Part1(){
+    public static void Day2Part1() {
         String filePath = "C:\\Users\\losma\\IdeaProjects\\AdventOfCode2023\\src\\main\\java\\somefile.txt" ;
         int[] sum = {0};
 
@@ -21,12 +22,6 @@ public class Day2 {
             Files.lines(Paths.get(filePath)).forEach(line -> {
                 if (!line.isEmpty()) {
                     //Process each line here,
-
-                    //Day1.Day1Part1(line, sum);
-                    //Day1.Day1Part2(line, sum);
-
-                    //Day2.Day2Part1(line,sum);
-
                     ArrayList<String> games = new ArrayList<>();
 
                     HashMap<String, Integer> gameValues = new HashMap<>();
@@ -64,21 +59,21 @@ public class Day2 {
                                 //Adding current values of the current color as it only indicates the end of the subset.
                                 currentRed = Integer.parseInt(games.get(i - 1));
 
-                                if(currentRed > gameValues.get("red")) {
+                                if (currentRed > gameValues.get("red")) {
                                     gameValues.put("red", currentRed);
                                 }
 
                                 //Wait until we add the current values of the found end of subset for correct value comparison
-                                if(isSubset[0] == true){
+                                if (isSubset[0] == true) {
                                     int highestCurrent = gameValues.get("red");
                                     int newSubsetCount;
 
-                                    if(subsetValues.get("red") != null){
+                                    if (subsetValues.get("red") != null) {
                                         newSubsetCount = subsetValues.get("red");
                                     }
 
                                     newSubsetCount = 0;
-                                    if(newSubsetCount > highestCurrent){
+                                    if (newSubsetCount > highestCurrent) {
                                         gameValues.put("red", newSubsetCount);
                                     }
                                 }
@@ -86,11 +81,11 @@ public class Day2 {
                                 isSubset[0] = true;
                             }
 
-                            if(isSubset[0] == true){
+                            if (isSubset[0] == true) {
                                 currentRed = Integer.parseInt(games.get(i - 1));
                                 subsetValues.put("red", currentRed);
 
-                                if(subsetValues.get("red") > gameValues.get("red")){
+                                if (subsetValues.get("red") > gameValues.get("red")) {
                                     gameValues.put("red", subsetValues.get("red"));
                                 }
                             }
@@ -110,21 +105,21 @@ public class Day2 {
                                 //Adding current values of the current color as it only indicates the end of the subset.
                                 currentBlue = Integer.parseInt(games.get(i - 1));
 
-                                if(currentBlue > gameValues.get("blue")) {
+                                if (currentBlue > gameValues.get("blue")) {
                                     gameValues.put("blue", currentBlue);
                                 }
 
                                 //Wait until we add the current values of the found end of subset for correct value comparison
-                                if(isSubset[0] == true){
+                                if (isSubset[0] == true) {
                                     int highestCurrent = gameValues.get("blue");
                                     int newSubsetCount;
 
-                                    if(subsetValues.get("blue") != null){
+                                    if (subsetValues.get("blue") != null) {
                                         newSubsetCount = subsetValues.get("blue");
                                     }
 
                                     newSubsetCount = 0;
-                                    if(newSubsetCount > highestCurrent){
+                                    if (newSubsetCount > highestCurrent) {
                                         gameValues.put("blue", newSubsetCount);
                                     }
                                 }
@@ -132,11 +127,11 @@ public class Day2 {
                                 isSubset[0] = true;
                             }
 
-                            if(isSubset[0] == true){
+                            if (isSubset[0] == true) {
                                 currentBlue = Integer.parseInt(games.get(i - 1));
                                 subsetValues.put("blue", currentBlue);
 
-                                if(subsetValues.get("blue") > gameValues.get("blue")){
+                                if (subsetValues.get("blue") > gameValues.get("blue")) {
                                     gameValues.put("blue", subsetValues.get("blue"));
                                 }
                             }
@@ -156,21 +151,21 @@ public class Day2 {
                                 //Adding current values of the current color as it only indicates the end of the subset.
                                 currentGreen = Integer.parseInt(games.get(i - 1));
 
-                                if(currentGreen > gameValues.get("green")) {
+                                if (currentGreen > gameValues.get("green")) {
                                     gameValues.put("green", currentGreen);
                                 }
 
                                 //Wait until we add the current values of the found end of subset for correct value comparison
-                                if(isSubset[0] == true){
+                                if (isSubset[0] == true) {
                                     int highestCurrent = gameValues.get("green");
                                     int newSubsetCount;
 
-                                    if(subsetValues.get("green") != null){
+                                    if (subsetValues.get("green") != null) {
                                         newSubsetCount = subsetValues.get("green");
                                     }
 
                                     newSubsetCount = 0;
-                                    if(newSubsetCount > highestCurrent){
+                                    if (newSubsetCount > highestCurrent) {
                                         gameValues.put("green", newSubsetCount);
                                     }
                                 }
@@ -178,11 +173,11 @@ public class Day2 {
                                 isSubset[0] = true;
                             }
 
-                            if(isSubset[0] == true){
+                            if (isSubset[0] == true) {
                                 currentGreen = Integer.parseInt(games.get(i - 1));
                                 subsetValues.put("green", currentGreen);
 
-                                if(subsetValues.get("green") > gameValues.get("green")){
+                                if (subsetValues.get("green") > gameValues.get("green")) {
                                     gameValues.put("green", subsetValues.get("green"));
                                 }
                             }
