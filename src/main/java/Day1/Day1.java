@@ -66,7 +66,7 @@ public class Day1 {
 
     public static void Day1Part2(String line, int[] sum) {
         //File path location
-        String filePath = "C:\\Users\\losma\\IdeaProjects\\AdventOfCode2023\\src\\main\\java\\somefile.txt";
+        String filePath = "C:\\Users\\losma\\IdeaProjects\\AdventOfCode2023\\src\\main\\java\\Day1\\input.txt";
 
         //creating a regex capture group
         String patternForFirst = "([0-9]|one|two|three|four|five|six|seven|eight|nine)";

@@ -222,7 +222,7 @@ public class Day2 {
     }
 
     public static void Day2Part2(){
-        String filePath = "C:\\Users\\losma\\IdeaProjects\\AdventOfCode2023\\src\\main\\java\\somefile.txt" ;
+        String filePath = "C:\\Users\\losma\\IdeaProjects\\AdventOfCode2023\\src\\main\\java\\Day2\\input.txt" ;
         int[] sum = {0};
 
         boolean[] isSubset = {false};
